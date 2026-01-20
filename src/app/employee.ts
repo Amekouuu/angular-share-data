@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { first } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -29,6 +30,12 @@ export class Employee {
     lastname: 'Kugisaki',
     email: 'nbrkugisaki@hau.edu.ph',
   },
+  {
+    id: 105,
+    firstname: 'Micko',
+    lastname: 'Alberto',
+    email: 'mqalberto@student.hau.edu.ph'
+  }
 ];
 }
 
