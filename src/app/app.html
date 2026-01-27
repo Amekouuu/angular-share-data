@@ -1,6 +1,6 @@
 <div class="employee-container">
   <h2>EMPLOYEES LIST</h2>
-  <table class="employee-table">
+  <table>
     <thead>
       <tr>
         <th>ID</th>
@@ -10,12 +10,12 @@
       </tr>
     </thead>
     <tbody>
-      @for (employee of employees; track employee.id) {
+      @for (e of employees; track e.id) {
         <tr>
-          <td>{{ employee.id }}</td>
-          <td>{{ employee.firstname }}</td>
-          <td>{{ employee.lastname }}</td>
-          <td>{{ employee.email }}</td>
+          <td>{{ e.id }}</td>
+          <td>{{ e.firstname }}</td>
+          <td>{{ e.lastname }}</td>
+          <td>{{ e.email }}</td>
         </tr>
       }
     </tbody>
@@ -24,22 +24,42 @@
 
 <div class="product-container">
   <h2>PRODUCT LIST</h2>
-  <table class="inventory-table">
+  <table>
     <thead>
       <tr>
-        <th>Product ID</th>
-        <th>Product Name</th>
-        <th>Description</th>
-        <th>Price</th>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>PRICE</th>
       </tr>
     </thead>
     <tbody>
-      @for (product of products; track product.id) {
+      @for (p of products; track p.id) {
         <tr>
-          <td class="sku">{{ product.id }}</td>
-          <td class="name">{{ product.name }}</td>
-          <td class="desc">{{ product.description }}</td>
-          <td class="price">₱{{ product.price.toLocaleString('en-PH', { minimumFractionDigits: 2 }) }}</td>
+          <td class="sku">{{ p.id }}</td>
+          <td>{{ p.name }}</td>
+          <td class="price">₱{{ p.price }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<div class="user-container">
+  <h2>DAILY QUOTES (LIMIT 5)</h2>
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>QUOTE</th>
+        <th>AUTHOR</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (q of quotes; track q.id) {
+        <tr>
+          <td class="sku">#{{ q.id }}</td>
+          <td class="desc">"{{ q.quote }}"</td>
+          <td class="price" style="background: none; border: none;">— {{ q.author }}</td>
         </tr>
       }
     </tbody>
