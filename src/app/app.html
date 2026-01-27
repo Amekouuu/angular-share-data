@@ -1,6 +1,6 @@
 <div class="employee-container">
   <h2>EMPLOYEES LIST</h2>
-  <table>
+  <table class="employee-table">
     <thead>
       <tr>
         <th>ID</th>
@@ -10,34 +10,64 @@
       </tr>
     </thead>
     <tbody>
-      @for (e of employees; track e.id) {
+      @for (employee of employees; track employee.id) {
         <tr>
-          <td>{{ e.id }}</td>
-          <td>{{ e.firstname }}</td>
-          <td>{{ e.lastname }}</td>
-          <td>{{ e.email }}</td>
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.firstname }}</td>
+          <td>{{ employee.lastname }}</td>
+          <td>{{ employee.email }}</td>
         </tr>
       }
     </tbody>
   </table>
 </div>
 
+
+
+
 <div class="product-container">
   <h2>PRODUCT LIST</h2>
-  <table>
+  <table class="inventory-table">
+    <thead>
+      <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products; track product.id) {
+        <tr>
+          <td class="sku">{{ product.id }}</td>
+          <td class="name">{{ product.name }}</td>
+          <td class="desc">{{ product.description }}</td>
+          <td class="price">₱{{ product.price.toLocaleString('en-PH', { minimumFractionDigits: 2 }) }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+
+<div class="user-container">
+  <h2>REMOTE USERS LIST</h2>
+  <table class="user-table">
     <thead>
       <tr>
         <th>ID</th>
         <th>NAME</th>
-        <th>PRICE</th>
+        <th>USERNAME</th>
+        <th>EMAIL</th>
       </tr>
     </thead>
     <tbody>
-      @for (p of products; track p.id) {
+      @for (user of httpusers; track user.id) {
         <tr>
-          <td class="sku">{{ p.id }}</td>
-          <td>{{ p.name }}</td>
-          <td class="price">₱{{ p.price }}</td>
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
         </tr>
       }
     </tbody>
@@ -45,7 +75,7 @@
 </div>
 
 <div class="user-container">
-  <h2>DAILY QUOTES (LIMIT 5)</h2>
+  <h2>DAILY QUOTES</h2>
   <table class="user-table">
     <thead>
       <tr>
@@ -65,5 +95,6 @@
     </tbody>
   </table>
 </div>
+
 
 <router-outlet />
